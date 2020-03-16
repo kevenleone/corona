@@ -1,0 +1,32 @@
+.App {
+  margin: 0;
+}
+
+hr {
+  color: #8E8F96;
+}
+
+.gray {
+  color: #8E8F96;
+}
+
+.layout {
+  background-color: #353743;
+  height: 100vh;
+  position: relative;
+
+  .right {
+    margin-left: 300px;
+  }
+
+  .sidebar {
+    background-color: #464853;
+    width: 350px;
+    height: 100vh;
+
+    .content {
+      padding-top: 50px;
+    }
+  }
+}
+

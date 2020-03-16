@@ -1,0 +1,26 @@
+.Sidebar {
+  section {
+    padding: 50px 30px;
+    color: white;
+    background-color: #43444F;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+
+    .counters {
+      .count {
+        margin-top: 20px;
+      }
+
+      p {
+        color: #8E8F96;
+        font-weight: 400;
+      }
+      span {
+        font-size: 26px;
+      }
+    }
+  }
+}

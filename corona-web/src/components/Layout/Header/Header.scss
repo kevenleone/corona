@@ -1,0 +1,36 @@
+.Header {
+  position: fixed;
+  top: 0;
+  background-color: #4A5568;
+  height: 65px;
+  display: flex;
+  width: 100%;
+
+  .left {
+    display: flex;
+    background-color: #3A4353;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding: 0px;
+    margin: 0px;
+
+    span {
+      color: white;
+      font-weight: 600;
+      font-size: 26px;
+    }
+  }
+
+  .right {
+    width: calc(100% - 300px);
+    display: flex;
+    align-items: center;
+
+    .pull-right {
+      margin-left: 95%;
+      cursor: pointer;
+      color: white;
+    }
+  }
+}
