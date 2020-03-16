@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import MapChart from '../../components/MapChart'
+import ReactTooltip from "react-tooltip";
 
-export default function index() {
+export default () => {
+    const [content, setContent] = useState("");
     return (
-        <div>
-            Home
-        </div>
-    )
-}
+      <div>
+        <MapChart setTooltipContent={setContent} />
+        <ReactTooltip>{content}</ReactTooltip>
+      </div>
+    );
+  }

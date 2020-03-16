@@ -1,9 +1,23 @@
-.App {
-  margin: 0;
+@font-face {
+  font-family: 'digital-7';
+  src: url('./assets/fonts/digital_7/digital-7.ttf');
 }
 
-hr {
-  color: #8E8F96;
+.timer {
+  span {
+    color: #ffffff;
+    font-size: 70px;
+    font-family: 'digital-7', sans-serif;
+  }
+}
+
+p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.App {
+  margin: 0;
 }
 
 .gray {

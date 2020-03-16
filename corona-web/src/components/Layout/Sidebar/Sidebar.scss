@@ -1,13 +1,28 @@
 .Sidebar {
+
+
+  hr {
+    border: 1px solid #8E8F96;
+  }
+
   section {
     padding: 50px 30px;
     color: white;
     background-color: #43444F;
     width: 300px;
-    height: 100vh;
+    min-height: 100vh;
     position: fixed;
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
+
+    ul {
+      list-style: none;
+      li {
+        margin-left: -30px;
+      }
+    }
+
 
     .counters {
       .count {
@@ -19,8 +34,23 @@
         font-weight: 400;
       }
       span {
-        font-size: 26px;
+        font-size: 36px;
       }
+    }
+
+    .footer {
+        margin-top: 30px;
+        span {
+          font-weight: 600;
+        }
+
+        ul {
+          margin-top: 10px;
+
+          li {
+            font-size: 18px;
+          }
+        }
     }
   }
 }

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-
-
+import './index.scss'
 
 export default function Timer() {
     const [today, setToday] = useState({
         time: getHour(),
         date: new Date().toDateString()
-    })
+    });
 
     function getHour() {
         const dateTime = new Date().toTimeString();
@@ -22,8 +21,8 @@ export default function Timer() {
     }, [])
 
     return (
-        <div>
-            <h1>{today.time}</h1>
+        <div className='timer'>
+            <span>{today.time}</span>
             <p className='gray'>{today.date}, Recife</p>
             <hr />
         </div>
