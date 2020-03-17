@@ -19,10 +19,25 @@ const rounded = num => {
   }
 };
 
+// const colorScale = scaleQuantile()
+// .domain(data.map(d => d.unemployment_rate))
+// .range([
+//   "#ffedea",
+//   "#ffcec5",
+//   "#ffad9f",
+//   "#ff8a75",
+//   "#ff5533",
+//   "#e2492d",
+//   "#be3d26",
+//   "#9a311f",
+//   "#782618"
+// ]);
+
+
 const MapChart = ({ setTooltipContent }) => {
   return (
     <>
-      <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
+      <ComposableMap data-tip="" data-html projectionConfig={{ scale: 200 }}>
         <ZoomableGroup>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
@@ -30,13 +45,19 @@ const MapChart = ({ setTooltipContent }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
+                  fill
                   onMouseEnter={() => {
                     const { NAME, POP_EST } = geo.properties;
-                    setTooltipContent(`${NAME} — ${rounded(POP_EST)}`);
+                    setTooltipContent(`${NAME} — ${rounded(POP_EST)} 
+                    <br> Total Cases — ${rounded(10)}
+                    <br> Total Recovered — 10
+                    <br> Total Deaths — 10
+                    `);
                   }}
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
+                  fill="#782618"
                   style={{
                     default: {
                       fill: "#D6D6DA",

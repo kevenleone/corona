@@ -9,14 +9,18 @@ export default function Sidebar() {
     total_cases: 0,
     total_recovered: 0,
     total_deaths: 0,
+    countries: {
+      top10: [],
+      all: []
+    },
     location: {}
   });
   async function getStatus() {
     const response = await axios.get('https://thevirustracker.com/free-api?global=stats')
     const data = response.data;
     if (data.stat === 'ok') {
-      setState(prev => ({
-        ...prev,
+      setState(prevState => ({
+        ...prevState,
         ...data.results[0]
       }))
     }
@@ -24,17 +28,52 @@ export default function Sidebar() {
 
   async function getLocation() {
     navigator.geolocation.getCurrentPosition(async ({coords: { latitude, longitude }}) => {
-      // const response = await axios.get(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
-      // console.log(response.data);
-      // setState({
-
-      // })
+      const response = await axios.get(`https://geocode.xyz/${latitude},${longitude}?geoit=json`)
+      const location = response.data;
+      setState(prevState => ({
+        ...prevState,
+        location: {
+          ...location,
+          country: countries.find(country => country.code === location.state)
+        }
+      }))
     })
   }
 
+  async function getCountriesStatus() {
+    const response = await axios.get('https://cors-anywhere.herokuapp.com/https://health-api.com/api/v1/covid-19/countries');
+    const all = response.data;
+    const top10 = all
+      .sort(({confirmed: A}, {confirmed: B}) => {
+        if (A < B) { return -1 }
+        if (A > B) { return 1 }
+        return 0
+      })
+      .reverse()
+      .slice(0, 10)
+      .map(country => {
+        const ct = countries.find(ct => ct.code === country.country_code);
+        return {
+          ...country,
+          ...ct
+        }
+      })
+
+    setState(prevState => ({
+      ...prevState,
+      countries: {
+        all,
+        top10
+      }
+    }))
+  }
+
   useEffect(() => {
-    getStatus();
-    getLocation();
+    Promise.all([
+      getStatus(), 
+      getLocation(), 
+      getCountriesStatus()
+    ])
   }, []);
 
   function toFloat(num) {
@@ -44,7 +83,7 @@ export default function Sidebar() {
   return (
     <div className="Sidebar">
       <section>
-        <Timer />
+        <Timer state={state} />
         <div className='counters'>
           <div className='count'>
             <p>Total Cases</p>
@@ -64,9 +103,9 @@ export default function Sidebar() {
           <hr />
         </div>
         <div className='footer'>
-          <span>Top 5 Dangers Country</span>
+          <span>Top 10 Dangers Country</span>
           <ul>
-            { countries.slice(30, 40).map(country => (
+            { state.countries.top10.map(country => (
               <li key={country.code}>{country.emoji} {country.name}</li>
             )) }
           </ul>

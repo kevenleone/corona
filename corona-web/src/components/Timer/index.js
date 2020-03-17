@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss'
 
-export default function Timer() {
+export default function Timer({state: { location }}) {
     const [today, setToday] = useState({
         time: getHour(),
         date: new Date().toDateString()
@@ -23,7 +23,9 @@ export default function Timer() {
     return (
         <div className='timer'>
             <span>{today.time}</span>
-            <p className='gray'>{today.date}, Recife</p>
+            <p className='gray'>{today.date}, <br />
+            {location.country && location.country.emoji}
+            {location.region}</p>
             <hr />
         </div>
     )
