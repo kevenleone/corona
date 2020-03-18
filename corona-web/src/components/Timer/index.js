@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import 'moment/locale/pt-br'
+import moment from 'moment-timezone'
 import './index.scss'
 
-export default function Timer({state: { location }}) {
-    const [today, setToday] = useState({
-        time: getHour(),
-        date: new Date().toDateString()
-    });
+export default function Timer({user_location}) {
+    const [today, setToday] = useState(getDate());
 
-    function getHour() {
-        const dateTime = new Date().toTimeString();
-        const time = dateTime.slice(0, 8);
-        return time;
+    function getDate() {
+        const timezone = user_location.timezone;
+        const todayMoment = moment.tz(timezone);
+        return {
+            date: todayMoment.format('dddd, DD MMMM YYYY'),
+            time: todayMoment.format('HH:mm:ss'),
+        }
     }
 
     useEffect(() => {
         setInterval(() => {
-            const time = getHour();
-            setToday({time, date: new Date().toDateString()});
+            setToday(getDate());
         }, 1000)
     }, [])
 
     return (
         <div className='timer'>
             <span>{today.time}</span>
-            <p className='gray'>{today.date}, <br />
-            {location.country && location.country.emoji}
-            {location.region}</p>
+            <p className='gray'>{today.date} <br />
+            {user_location.country && user_location.country.emoji}
+            {user_location.region}</p>
             <hr />
         </div>
     )
