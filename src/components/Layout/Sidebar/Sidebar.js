@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
+import React from 'react';
+import { useSelector } from 'react-redux'
 import Timer from '../../Timer'
-import countries from '../../../utils/countries'
 import './Sidebar.scss';
 
 export default function Sidebar() {
-  const { global, countries, user_location } = useSelector(state => state.cov)
-  const dispatch = useDispatch();
-
-  console.log({
-    cov: {
-      global, countries, user_location
-    },
-  })
-
-  useEffect(() => {
-    dispatch({ type: 'GET_ALL_INSIGHTS' })
-  }, []);
-
+  const { global_info, countries, user_location } = useSelector(state => state.cov)
   function toFloat(num) {
     return Number(num).toLocaleString();
   }
@@ -29,16 +15,16 @@ export default function Sidebar() {
         <Timer user_location={user_location} />
         <div className='counters'>
           <div className='count'>
-            <p>Total Cases</p>
-            <span>{toFloat(global.total_cases)}</span>
+            <p>Total Active Cases</p>
+            <span>{toFloat(global_info.total_active_cases)}</span>
           </div>
           <div className='count'>
-            <p>Total Recovered</p>
-            <span>{toFloat(global.total_recovered)}</span>
+            <p>Total Serious</p>
+            <span>{toFloat(global_info.total_serious_cases)}</span>
           </div>
           <div className='count'>
-            <p>Total Deaths</p>
-            <span>{toFloat(global.total_deaths)}</span>
+            <p>Deaths Today</p>
+            <span>{toFloat(global_info.total_new_deaths_today)}</span>
           </div>
         </div>
 

@@ -6,8 +6,7 @@ import {
   Geography
 } from "react-simple-maps";
 
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+import geomap from './world-110m.json'
 
 const rounded = num => {
   if (num < 1000) {
@@ -43,7 +42,7 @@ const MapChart = ({getCountryStatus, setTooltipContent}) => {
   return (
       <ComposableMap data-tip="" data-html projectionConfig={{ scale: 200 }}>
         <ZoomableGroup>
-          <Geographies geography={geoUrl}>
+          <Geographies geography={geomap}>
             {({ geographies }) =>
               geographies.map(geo => {
                 const { confirmed, deaths, recovered } = getCountryStatus(geo.properties);
@@ -53,13 +52,12 @@ const MapChart = ({getCountryStatus, setTooltipContent}) => {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    fill
                     onMouseEnter={() => {
                       const { NAME, POP_EST } = geo.properties;
                       setTooltipContent(`${NAME} — ${rounded(POP_EST)} 
-                      <br> Total Cases — ${rounded(confirmed)}
-                      <br> Total Recovered — ${rounded(recovered)}
-                      <br> Total Deaths — ${rounded(deaths)}
+                        <br> Total Cases — ${rounded(confirmed)}
+                        <br> Total Recovered — ${rounded(recovered)}
+                        <br> Total Deaths — ${rounded(deaths)}
                       `);
                     }}
                     onMouseLeave={() => {

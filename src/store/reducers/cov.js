@@ -4,10 +4,11 @@ const INITIAL_STATE = {
     all: [],
     top10: [],
   },
-  global: {
-    total_cases: 0,
-    total_deaths: 0,
-    total_recovered: 0
+  global_info: {
+    total_active_cases: 0,
+    total_serious_cases: 0,
+    total_new_deaths_today: 0,
+    total_new_cases_today: 0,
   },
   user_location: {
     timezone: 'America/Recife'
@@ -20,7 +21,7 @@ const INITIAL_STATE = {
         return { ...state, user_location: action.payload }
       }
       case 'SET_GLOBAL_STATUS': {
-        return { ...state, global: action.payload }
+        return { ...state, global_info: action.payload }
       }
       case 'SET_COUNTRIES_STATUS': {
         return { ...state, countries: action.payload }
