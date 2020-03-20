@@ -1,5 +1,5 @@
 export default {
-  countries: 'https://coronavirus-19-api.herokuapp.com/countries',
-  globalStatus: 'https://coronavirus-19-api.herokuapp.com/all',
+  countries: 'https://corona.lmao.ninja/countries',
+  globalStatus: 'https://corona.lmao.ninja/all',
   userLocation: ({ latitude, longitude }) => `https://geocode.xyz/${latitude},${longitude}?geoit=json`,
 };

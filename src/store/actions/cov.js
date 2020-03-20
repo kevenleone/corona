@@ -40,7 +40,21 @@ function* getUserLocation() {
 function* getCountriesStatus() {
   const response = yield call(axios.get, api.countries);
   const { data } = response;
-  const top10 = data
+
+  const allCountries = data.map((country) => {
+    const ct = countries.find((cty) => {
+      if (cty.or) {
+        return cty.or.includes(country.country);
+      }
+      return cty.name === country.country;
+    });
+    return {
+      ...country,
+      ...ct,
+    };
+  });
+
+  const top10 = allCountries
     .sort((A, B) => {
       if (A.cases < B.cases) {
         return -1;
@@ -51,21 +65,9 @@ function* getCountriesStatus() {
       return 0;
     })
     .reverse()
-    .slice(0, 10)
-    .map((country) => {
-      const ct = countries.find((ct) => {
-        if (ct.or) {
-          return ct.or.includes(country.country);
-        }
-        return ct.name === country.country;
-      });
-      return {
-        ...country,
-        ...ct,
-      };
-    });
-  console.log(top10);
-  yield put({ type: 'SET_COUNTRIES_STATUS', payload: { all: data, top10 } });
+    .slice(0, 10);
+
+  yield put({ type: 'SET_COUNTRIES_STATUS', payload: { all: allCountries, top10 } });
 }
 
 export function* getInsights(params) {
