@@ -407,6 +407,7 @@ export default [
   {
     code: 'GB',
     name: 'United Kingdom',
+    or: ['GB', 'United Kimgdom', 'UK'],
     emoji: '🇬🇧',
   },
   {
@@ -637,6 +638,7 @@ export default [
   {
     code: 'KR',
     name: 'South Korea',
+    or: ['KR', 'S. Korea'],
     emoji: '🇰🇷',
   },
   {
@@ -1202,6 +1204,7 @@ export default [
   {
     code: 'US',
     name: 'United States',
+    or: ['United States', 'US', 'USA', 'United States of America'],
     emoji: '🇺🇸',
   },
   {

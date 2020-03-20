@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux';
 import Timer from '../../Timer';
 import './Sidebar.scss';
 
+import { helpers } from '../../../utils';
+
 export default function Sidebar() {
-  const { global_info, countries, user_location } = useSelector((state) => state.cov);
+  const { globalInfo, countries, userLocation } = useSelector((state) => state.cov);
   function toFloat(num) {
     return Number(num).toLocaleString();
   }
@@ -12,19 +14,19 @@ export default function Sidebar() {
   return (
     <div className="Sidebar">
       <section>
-        <Timer user_location={user_location} />
+        <Timer userLocation={userLocation} />
         <div className="counters">
           <div className="count">
-            <p>Total Active Cases</p>
-            <span>{toFloat(global_info.total_active_cases)}</span>
+            <p>Total Cases</p>
+            <span>{toFloat(globalInfo.cases)}</span>
           </div>
           <div className="count">
-            <p>Total Serious</p>
-            <span>{toFloat(global_info.total_serious_cases)}</span>
+            <p>Total Deaths</p>
+            <span>{toFloat(globalInfo.deaths)}</span>
           </div>
           <div className="count">
-            <p>Deaths Today</p>
-            <span>{toFloat(global_info.total_new_deaths_today)}</span>
+            <p>Total Recovered</p>
+            <span>{toFloat(globalInfo.recovered)}</span>
           </div>
         </div>
 
@@ -33,17 +35,23 @@ export default function Sidebar() {
         </div>
         <div className="footer">
           <span>Top 10 Dangers Country</span>
-          <ul>
-            { countries.top10.map((country) => (
-              <li key={country.code}>
-                {country.emoji}
-                {' '}
-                {country.name}
-              </li>
-            )) }
-          </ul>
+          <table className="mt-3">
+            <tbody>
+              <tr>
+                <th colSpan={2}>Country</th>
+                <th>Total</th>
+              </tr>
+              { countries.top10.map((country) => (
+                <tr key={country.code}>
+                  <td>{country.emoji}</td>
+                  <td>{country.name}</td>
+                  <td>{helpers.rounded(country.cases)}</td>
+                </tr>
+              )) }
+              <tr />
+            </tbody>
+          </table>
         </div>
-
       </section>
     </div>
   );
