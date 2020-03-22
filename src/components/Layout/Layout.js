@@ -4,7 +4,7 @@ import Octicon, { LineArrowLeft, LineArrowRight } from '@primer/octicons-react';
 import Sidebar from './Sidebar';
 import './Layout.scss';
 
-export default function Layout({ children, title }) {
+export default function Layout({ children }) {
   const dispatch = useDispatch();
   const { location } = useSelector((state) => state.general);
   useEffect(() => {
@@ -20,22 +20,19 @@ export default function Layout({ children, title }) {
     <div className="Layout">
       <Sidebar />
       <main className="content">
-        <div className="head">
-          <span>{title}</span>
-        </div>
         <div className="children_content">
           { children }
         </div>
         <div className="paginate">
           { location.pathname !== '/' && (
-          <div onClick={() => dispatch({ type: 'MOVE_BACK_SAGA' })} className="box back">
+          <button type="button" onClick={() => dispatch({ type: 'MOVE_BACK_SAGA' })} className="box back">
             <Octicon icon={LineArrowLeft} size="large" />
-          </div>
+          </button>
           )}
 
-          <div onClick={() => dispatch({ type: 'MOVE_FORWARD_SAGA' })} className="box forward">
+          <button type="button" onClick={() => dispatch({ type: 'MOVE_FORWARD_SAGA' })} className="box forward">
             <Octicon icon={LineArrowRight} size="large" />
-          </div>
+          </button>
         </div>
       </main>
     </div>

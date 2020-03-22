@@ -5,6 +5,7 @@ import {
   Geographies,
   Geography,
 } from 'react-simple-maps';
+import PropTypes from 'prop-types';
 
 import { helpers } from '../../utils';
 import geomap from './world-110m.json';
@@ -82,5 +83,10 @@ const MapChart = ({ getCountryStatus, setTooltipContent }) => (
     </ZoomableGroup>
   </ComposableMap>
 );
+
+MapChart.propTypes = {
+  getCountryStatus: PropTypes.func.isRequired,
+  setTooltipContent: PropTypes.func.isRequired,
+};
 
 export default memo(MapChart);

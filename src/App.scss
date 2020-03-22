@@ -8,6 +8,11 @@
   margin-left: -50px;
 }
 
+.table-countries {
+  max-height: calc(100vh - 240px) !important;
+  overflow-y: scroll;
+}
+
 .timer {
   span {
     color: #ffffff;

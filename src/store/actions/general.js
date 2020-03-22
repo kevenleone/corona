@@ -12,6 +12,5 @@ export function* moveForward() {
 }
 
 export function* moveBack() {
-  console.log(window.location);
   yield put(goBack());
 }

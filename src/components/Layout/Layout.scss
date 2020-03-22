@@ -14,7 +14,7 @@
   }
 
   .children_content {
-    margin-right: 40px;
+    margin: 40px;
   }
 
   .paginate {
@@ -41,6 +41,7 @@
       height: 150px;
       justify-content: center;
       align-items: center;
+      border-color: transparent;
     }
   }
 }
