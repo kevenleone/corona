@@ -1,12 +1,10 @@
 .Sidebar {
-
-
   hr {
     border: 1px solid #8E8F96;
   }
 
   section {
-    padding: 50px 30px;
+    padding: 10px 30px;
     color: white;
     background-color: #43444F;
     width: 300px;
@@ -23,10 +21,19 @@
       }
     }
 
+    .github-info {
+      position: fixed;
+      bottom: 0;
+      margin-bottom: 50px;
+
+      span {
+        font-size: 22px;
+      }
+    }
 
     .counters {
       .count {
-        margin-top: 20px;
+        margin-top: 10px;
       }
 
       p {
@@ -39,18 +46,22 @@
     }
 
     .footer {
-        margin-top: 10px;
         span {
           font-weight: 600;
         }
 
         ul {
           margin-top: 10px;
-
           li {
             font-size: 18px;
           }
         }
+    }
+  }
+
+  @media (max-width: 768px) {
+    section {
+      display: none;
     }
   }
 }

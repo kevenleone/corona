@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Octicon, { LogoGithub } from '@primer/octicons-react';
+import { Button } from 'reactstrap';
 import Timer from '../../Timer';
 import './Sidebar.scss';
 
@@ -51,6 +53,13 @@ export default function Sidebar() {
               <tr />
             </tbody>
           </table>
+        </div>
+        <div className="github-info">
+          <Button outline color="info" onClick={() => window.open('https://github.com/kevenleone/corona')}>
+            Support us leaving a ★ at
+            {' '}
+            <Octicon icon={LogoGithub} size="small" />
+          </Button>
         </div>
       </section>
     </div>
