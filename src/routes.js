@@ -1,16 +1,19 @@
-import React from 'react'
-import { HashRouter, Switch, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import Layout from './components/Layout'
+import React from 'react';
+import { Switch, Route, Router } from 'react-router-dom';
+import Home from './pages/Home';
+import history from './utils/history';
+import Country from './pages/Country';
+import Layout from './components/Layout';
 
 export default function routes() {
-    return (
-        <Layout>
-            <HashRouter>
-                <Switch>
-                    <Route component={Home}></Route>
-                </Switch>
-            </HashRouter>
-        </Layout>
-    )
+  return (
+    <Router history={history}>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/countries" component={Country} />
+        </Switch>
+      </Layout>
+    </Router>
+  );
 }

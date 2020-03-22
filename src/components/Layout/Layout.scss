@@ -5,7 +5,7 @@
   .content {
     max-height: 100vh;
     overflow: auto;
-    margin-left: 330px;
+    margin-left: 300px;
 
     span {
       font-size: 26px;
@@ -15,5 +15,32 @@
 
   .children_content {
     margin-right: 40px;
+  }
+
+  .paginate {
+    cursor: pointer;
+    .forward {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .back {
+      position: absolute;
+      bottom: 0;
+    }
+
+    svg {
+      color: white;
+    }
+
+    .box {
+      display: flex;
+      background-color: #EF6025;
+      width: 150px;
+      height: 150px;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

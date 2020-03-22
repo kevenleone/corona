@@ -23,20 +23,6 @@ function* getGlobalStatus() {
   yield put({ type: 'SET_GLOBAL_STATUS', payload: data });
 }
 
-function* getUserLocation() {
-  const { latitude, longitude } = yield call(getLocation);
-  const geocodeApi = api.userLocation({ latitude, longitude });
-  const response = yield call(axios.get, geocodeApi);
-  const location = response.data;
-  yield put({
-    type: 'SET_USER_LOCATION',
-    payload: {
-      ...location,
-      country: countries.find((country) => country.code === location.state),
-    },
-  });
-}
-
 function* getCountriesStatus() {
   const response = yield call(axios.get, api.countries);
   const { data } = response;
@@ -74,7 +60,6 @@ export function* getInsights(params) {
   try {
     const pipeline = [
       call(getGlobalStatus, params),
-      call(getUserLocation, params),
       call(getCountriesStatus),
     ];
 
@@ -82,4 +67,18 @@ export function* getInsights(params) {
   } catch (e) {
     console.log(e);
   }
+}
+
+export function* getUserLocation() {
+  const { latitude, longitude } = yield call(getLocation);
+  const geocodeApi = api.userLocation({ latitude, longitude });
+  const response = yield call(axios.get, geocodeApi);
+  const location = response.data;
+  yield put({
+    type: 'SET_USER_LOCATION',
+    payload: {
+      ...location,
+      country: countries.find((country) => country.code === location.state),
+    },
+  });
 }
