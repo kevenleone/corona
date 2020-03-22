@@ -24,15 +24,6 @@ export default function Timer({ userLocation }) {
   return (
     <div className="timer">
       <span>{today.time}</span>
-      <p className="gray">
-        {today.date}
-        {' '}
-        <br />
-        {userLocation.country && userLocation.country.emoji}
-        {userLocation.region}
-
-      </p>
-      <hr />
     </div>
   );
 }

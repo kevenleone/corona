@@ -2,13 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Octicon, { LogoGithub } from '@primer/octicons-react';
 import { Button } from 'reactstrap';
-import Timer from '../../Timer';
 import './Sidebar.scss';
 
 import { helpers } from '../../../utils';
 
 export default function Sidebar() {
-  const { globalInfo, countries, userLocation } = useSelector((state) => state.cov);
+  const { globalInfo, countries } = useSelector((state) => state.cov);
   function toFloat(num) {
     return Number(num).toLocaleString();
   }
@@ -16,7 +15,6 @@ export default function Sidebar() {
   return (
     <div className="Sidebar">
       <section>
-        <Timer userLocation={userLocation} />
         <div className="counters">
           <div className="count">
             <p>Total Cases</p>

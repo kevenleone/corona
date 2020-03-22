@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import {
-  ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography,
@@ -13,25 +12,24 @@ import geomap from './world-110m.json';
 const { getColor, rounded } = helpers;
 
 const MapChart = ({ getCountryStatus, setTooltipContent }) => (
-  <ComposableMap className="map_container" data-tip="" data-html projectionConfig={{ scale: 190 }}>
-    <ZoomableGroup>
-      <Geographies geography={geomap}>
-        {({ geographies }) => geographies.map((geo) => {
-          const {
-            cases,
-            deaths,
-            recovered,
-            todayCases,
-            critical,
-          } = getCountryStatus(geo.properties);
-          const defaultColor = getColor(cases);
-          return (
-            <Geography
-              key={geo.rsmKey}
-              geography={geo}
-              onMouseEnter={() => {
-                const { NAME, POP_EST } = geo.properties;
-                setTooltipContent(`${NAME} — ${rounded(POP_EST)} 
+  <ComposableMap className="map_container" data-tip="" data-html projectionConfig={{ scale: 170 }}>
+    <Geographies geography={geomap}>
+      {({ geographies }) => geographies.map((geo) => {
+        const {
+          cases,
+          deaths,
+          recovered,
+          todayCases,
+          critical,
+        } = getCountryStatus(geo.properties);
+        const defaultColor = getColor(cases);
+        return (
+          <Geography
+            key={geo.rsmKey}
+            geography={geo}
+            onMouseEnter={() => {
+              const { NAME, POP_EST } = geo.properties;
+              setTooltipContent(`${NAME} — ${rounded(POP_EST)} 
                 <br />
                 <br />
                 <table>
@@ -58,29 +56,28 @@ const MapChart = ({ getCountryStatus, setTooltipContent }) => (
                     </tr>
                   </tbody>
                 </table>`);
-              }}
-              onMouseLeave={() => {
-                setTooltipContent('');
-              }}
-              style={{
-                default: {
-                  fill: defaultColor, // D6D6DA
-                  outline: 'none',
-                },
-                hover: {
-                  fill: 'darkblue',
-                  outline: 'none',
-                },
-                pressed: {
-                  fill: '#E42',
-                  outline: 'none',
-                },
-              }}
-            />
-          );
-        })}
-      </Geographies>
-    </ZoomableGroup>
+            }}
+            onMouseLeave={() => {
+              setTooltipContent('');
+            }}
+            style={{
+              default: {
+                fill: defaultColor, // D6D6DA
+                outline: 'none',
+              },
+              hover: {
+                fill: 'darkblue',
+                outline: 'none',
+              },
+              pressed: {
+                fill: '#E42',
+                outline: 'none',
+              },
+            }}
+          />
+        );
+      })}
+    </Geographies>
   </ComposableMap>
 );
 

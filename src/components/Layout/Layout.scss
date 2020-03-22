@@ -3,14 +3,8 @@
   min-height: 100vh;
 
   .content {
-    max-height: 100vh;
-    overflow: auto;
+    overflow-y: auto;
     margin-left: 300px;
-
-    span {
-      font-size: 26px;
-      color: #4A5568;
-    }
   }
 
   @media (max-width: 768px) {
@@ -20,7 +14,7 @@
   }
 
   .children_content {
-    margin: 40px;
+    margin: 90px 20px 0px;
   }
 
   .paginate {
@@ -38,16 +32,6 @@
 
     svg {
       color: white;
-    }
-
-    .box {
-      display: flex;
-      background-color: #EF6025;
-      width: 150px;
-      height: 150px;
-      justify-content: center;
-      align-items: center;
-      border-color: transparent;
     }
   }
 }

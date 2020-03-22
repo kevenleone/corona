@@ -1,0 +1,26 @@
+.logo {
+    display: flex;
+    flex-direction: row;
+
+    .data {
+      white-space: nowrap;
+      margin-left: 15px;
+      span.header {
+        justify-content: right;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+
+        small {
+          font-size: 22px;
+          font-weight: 100;
+        }
+      }
+
+      span {
+        font-size: 15px;
+        color: #dadada;
+        font-weight: 100;
+      }
+    }
+  }
