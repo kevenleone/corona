@@ -56,16 +56,22 @@ function* getCountriesStatus() {
   yield put({ type: 'SET_COUNTRIES_STATUS', payload: { all: allCountries, top10 } });
 }
 
-export function* getInsights(params) {
+export function* getInsights(actions) {
+  const { showLoading } = actions.payload;
+
+  if (showLoading) yield put({ type: 'TOGGLE_LOADING' });
+
   try {
     const pipeline = [
-      call(getGlobalStatus, params),
+      call(getGlobalStatus),
       call(getCountriesStatus),
     ];
 
     yield all(pipeline);
   } catch (e) {
     console.log(e);
+  } finally {
+    if (showLoading) yield put({ type: 'TOGGLE_LOADING' });
   }
 }
 

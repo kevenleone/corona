@@ -8,8 +8,8 @@ export default function Layout({ children }) {
   const dispatch = useDispatch();
   const { location } = useSelector((state) => state.general);
   useEffect(() => {
-    dispatch({ type: 'GET_ALL_INSIGHTS_SAGA' });
-    dispatch({ type: 'GET_USER_LOCATION_SAGA' });
+    dispatch({ type: 'GET_ALL_INSIGHTS_SAGA', payload: { showLoading: true } });
+    // dispatch({ type: 'GET_USER_LOCATION_SAGA' });
 
     setInterval(() => {
       dispatch({ type: 'GET_ALL_INSIGHTS_SAGA' });
