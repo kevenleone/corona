@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
+import { useSelector } from 'react-redux';
 import MapChart from '../../components/MapChart';
 
 const Home = () => {
@@ -25,13 +25,13 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <>
       <MapChart
         getCountryStatus={getCountryStatus}
         setTooltipContent={setContent}
       />
       <ReactTooltip>{content}</ReactTooltip>
-    </div>
+    </>
   );
 };
 

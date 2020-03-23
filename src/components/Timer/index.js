@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
-// import 'moment/locale/pt-br';
-import moment from 'moment-timezone';
+import moment from 'moment';
 import './index.scss';
 
-export default function Timer({ userLocation }) {
+export default function Timer() {
   const getDate = useCallback(() => {
-    const { timezone } = userLocation;
-    const todayMoment = moment.tz(timezone);
+    const todayMoment = moment();
     return {
       date: todayMoment.format('dddd, DD MMMM YYYY'),
       time: todayMoment.format('HH:mm:ss'),
     };
-  }, [userLocation]);
+  }, []);
 
   const [today, setToday] = useState(getDate());
 

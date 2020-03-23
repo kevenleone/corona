@@ -2,6 +2,24 @@
   background-color: #353743;
   min-height: 100vh;
 
+  .tabs {
+    position: relative;
+    z-index: 999;
+    a {
+      margin-right: 10px;
+    }
+
+    .btn.btn-secondary {
+      background-color: #333;
+      border-color: #333;
+    }
+    
+    .btn.btn-secondary.active {
+      background-color: #111;
+      border-color: #111;;
+    }
+  }
+
   .content {
     overflow-y: auto;
     margin-left: 300px;

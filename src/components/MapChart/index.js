@@ -12,7 +12,7 @@ import geomap from './world-110m.json';
 const { getColor, rounded } = helpers;
 
 const MapChart = ({ getCountryStatus, setTooltipContent }) => (
-  <ComposableMap className="map_container" data-tip="" data-html projectionConfig={{ scale: 170 }}>
+  <ComposableMap className="map_container" data-tip="" data-html>
     <Geographies geography={geomap}>
       {({ geographies }) => geographies.map((geo) => {
         const {
