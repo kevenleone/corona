@@ -57,7 +57,7 @@ function* getCountriesStatus() {
 }
 
 export function* getInsights(actions) {
-  const { showLoading } = actions.payload;
+  const { showLoading } = actions.payload || {};
   if (showLoading) yield put({ type: 'TOGGLE_LOADING' });
   try {
     const pipeline = [
