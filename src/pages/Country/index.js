@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table } from 'reactstrap';
+import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import Section from '../../components/Layout/Section';
 
@@ -7,6 +8,10 @@ const Country = () => {
   const { countries: { all: countries } } = useSelector((state) => state.cov);
   return (
     <Section title="Countries Info" className="table-countries">
+      <Helmet>
+        <title>Countries Statistics</title>
+        <meta name="description" content="Coronavirus country statistics" />
+      </Helmet>
       <Table hover>
         <thead>
           <tr>

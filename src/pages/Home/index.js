@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactTooltip from 'react-tooltip';
+import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import MapChart from '../../components/MapChart';
 
@@ -26,6 +27,10 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Corona Heatmap</title>
+        <meta name="description" content="Coronavirus country heatmap info" />
+      </Helmet>
       <MapChart
         getCountryStatus={getCountryStatus}
         setTooltipContent={setContent}
