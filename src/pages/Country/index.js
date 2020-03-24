@@ -10,9 +10,10 @@ const Country = () => {
       <Table hover>
         <thead>
           <tr>
+            <th width="2%">#</th>
             <th>Country</th>
-            <th>Active</th>
             <th>Cases</th>
+            <th>Active</th>
             <th>Deaths</th>
             <th>Recovered</th>
             <th>Today Cases / Deaths</th>
@@ -21,11 +22,12 @@ const Country = () => {
         <tbody>
           { countries.map(({
             active, country, cases, emoji, todayCases, deaths, todayDeaths, recovered,
-          }) => (
+          }, index) => (
             <tr key={country}>
+              <td>{index + 1}</td>
               <td>{`${emoji || ''} ${country}`}</td>
-              <td>{active}</td>
               <td>{cases}</td>
+              <td>{active}</td>
               <td>{deaths}</td>
               <td>{recovered}</td>
               <td>{`${todayCases} / ${todayDeaths}`}</td>
