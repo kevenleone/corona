@@ -7,7 +7,7 @@ import './Layout.scss';
 
 export default function Layout({ children }) {
   const dispatch = useDispatch();
-  const { location: { pathname } } = useSelector((state) => state.general);
+  const { location: { hash } } = useSelector((state) => state.general);
   useEffect(() => {
     dispatch({ type: 'GET_ALL_INSIGHTS_SAGA', payload: { showLoading: true } });
     setInterval(() => {
@@ -16,9 +16,8 @@ export default function Layout({ children }) {
   }, [dispatch]);
 
   function isActive(path) {
-    return path === pathname ? 'active' : '';
+    return path === hash ? 'active' : '';
   }
-
   return (
     <div className="Layout">
       <Header />
@@ -26,8 +25,8 @@ export default function Layout({ children }) {
       <main className="content">
         <div className="children_content">
           <div className="tabs">
-            <Link to="/" className={`btn btn-secondary ${isActive('/')}`}>Map</Link>
-            <Link to="/countries" className={`btn btn-secondary ${isActive('/countries')}`}>Countries Info</Link>
+            <Link to="/" className={`btn btn-secondary ${isActive('#/')}`}>Map</Link>
+            <Link to="/countries" className={`btn btn-secondary ${isActive('#/countries')}`}>Countries Info</Link>
           </div>
           { children }
         </div>
