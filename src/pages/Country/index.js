@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table } from 'reactstrap';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
+import { PageView } from '../../utils/ga';
 import Section from '../../components/Layout/Section';
 
 const Country = () => {
   const { countries: { all: countries } } = useSelector((state) => state.cov);
+
+  useEffect(() => {
+    PageView('/countries');
+  }, []);
+
   return (
     <Section title="Countries Info" className="table-countries">
       <Helmet>

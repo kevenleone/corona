@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
+import { PageView } from '../../utils/ga';
 import MapChart from '../../components/MapChart';
 
 const Home = () => {
   const [content, setContent] = useState('');
   const { countries: { all: countries } } = useSelector((state) => state.cov);
+
+  useEffect(() => {
+    PageView('/');
+  }, []);
 
   function getCountryStatus({ NAME, ISO_A2 }) {
     const countryFound = countries.find(({ country, country_code: code, or }) => {

@@ -20,7 +20,6 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, userLocation: action.payload };
     }
     case 'SET_GLOBAL_STATUS': {
-      console.log({ payload: action.payload });
       return { ...state, globalInfo: action.payload };
     }
     case 'SET_COUNTRIES_STATUS': {
