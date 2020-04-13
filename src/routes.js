@@ -5,6 +5,7 @@ import {
 import Home from './pages/Home';
 import history from './utils/history';
 import Country from './pages/Country';
+import Timeline from './pages/Timeline';
 import Layout from './components/Layout';
 
 export default function routes() {
@@ -14,6 +15,7 @@ export default function routes() {
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/timeline" component={Timeline} />
             <Route exact path="/countries" component={Country} />
           </Switch>
         </Layout>

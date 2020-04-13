@@ -1,0 +1,29 @@
+.custom-tooltip {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+  background-color: white;
+  width: 170px;
+
+  .heading {
+    padding-top: 10px;
+    margin-left: 25px;
+    margin-bottom: -10px;
+  }
+
+  p.label {
+    font-size: 14px;
+  }
+
+  table {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+
+    border-collapse:initial; 
+
+    tr {
+      line-height: 23px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.MainChart {
+  ul.recharts-default-legend {
+    li {
+      margin-right: 30px !important;
+      svg {
+        margin: 0 8px !important;
+      }
+      span {
+        color: #777;
+        font-weight: 200;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -27,6 +27,7 @@ export default function Layout({ children }) {
           <div className="tabs">
             <Link to="/" className={`btn btn-secondary ${isActive('#/')}`}>Map</Link>
             <Link to="/countries" className={`btn btn-secondary ${isActive('#/countries')}`}>Countries Info</Link>
+            <Link to="/timeline" className={`btn btn-secondary ${isActive('#/timeline')}`}>Timeline</Link>
           </div>
           { children }
         </div>

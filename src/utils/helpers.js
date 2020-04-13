@@ -32,3 +32,7 @@ export const getColor = (total) => {
   }
   return '#782618';
 };
+
+export function normalizeToArray(variable) {
+  return typeof variable === 'string' ? [variable] : variable;
+}

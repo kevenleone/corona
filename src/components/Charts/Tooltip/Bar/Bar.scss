@@ -1,0 +1,19 @@
+.BarTooltip {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  border-radius: 3px;
+  background-color: white;
+  width: 215px;
+
+  p.label {
+    font-size: 14px;
+  }
+
+  table {
+    margin-left: 20px;
+    margin-top: -10px;
+
+    border-collapse:separate; 
+    border-spacing: 0 0.5em;
+  }
+}
