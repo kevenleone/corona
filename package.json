@@ -8,8 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "@primer/octicons-react": "^9.6.0",
+    "bootstrap": "^4.4.1",
     "next": "9.3.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "reactstrap": "^8.4.1",
+    "sass": "^1.26.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.1",
+    "@types/react": "^16.9.34",
+    "typescript": "^3.8.3"
   }
 }
