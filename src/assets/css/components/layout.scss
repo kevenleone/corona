@@ -1,7 +1,8 @@
 .layout {
     background-color: #F1F2F6;
-    height: 100vh;
+    min-height: 100vh;
     .content {
-        margin-left: 200px;
+        margin-left: 100px;
+        padding: 50px;
     }
 }

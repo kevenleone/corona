@@ -1,6 +1,34 @@
 .sidebar {
     background-color: #FFFFFF;
-    width: 150px;
+    width: 100px;
     height: 100vh;
     position: fixed;
+
+    .logo {
+        flex: auto;
+        width: 60px;
+        height: 60px;
+    }
+
+    .menu-itens {
+        .item {
+            margin-bottom: 30px;
+            width: 100%;
+            text-align: center;
+
+            svg {
+                fill: #BBB9C6 !important;
+            }
+        }
+        
+        .item.active {
+            border-right-color: #C1C2F0;
+            border-right-width: 4px;
+            border-right-style: solid;
+
+            svg {
+                fill: #96A5CC !important;
+            }
+        }
+    }
 }

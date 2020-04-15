@@ -1,3 +1,21 @@
 @import './components/sidebar';
 @import './components/layout';
+@import './components/box';
 @import './variables';
+
+.text-primary {
+    color: #717179 !important;
+}
+
+.text-secondary {
+    color: #A8A7AC !important;
+}
+
+.live-reports {
+    table {
+        td, th {
+            padding: 5px !important;
+            vertical-align: middle !important;
+        }
+    }
+}
