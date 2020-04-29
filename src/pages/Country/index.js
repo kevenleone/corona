@@ -5,6 +5,10 @@ import { useSelector } from 'react-redux';
 import { PageView } from '../../utils/ga';
 import Section from '../../components/Layout/Section';
 
+function toFloat(num) {
+  return Number(num).toLocaleString();
+}
+
 const Country = () => {
   const { countries: { all: countries } } = useSelector((state) => state.cov);
 
@@ -37,11 +41,11 @@ const Country = () => {
             <tr key={country}>
               <td>{index + 1}</td>
               <td>{`${emoji || ''} ${country}`}</td>
-              <td>{cases}</td>
-              <td>{active}</td>
-              <td>{deaths}</td>
-              <td>{recovered}</td>
-              <td>{`${todayCases} / ${todayDeaths}`}</td>
+              <td>{toFloat(cases)}</td>
+              <td>{toFloat(active)}</td>
+              <td>{toFloat(deaths)}</td>
+              <td>{toFloat(recovered)}</td>
+              <td>{`${toFloat(todayCases)} / ${toFloat(todayDeaths)}`}</td>
             </tr>
           )) }
         </tbody>
